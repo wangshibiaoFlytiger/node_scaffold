@@ -21,13 +21,16 @@ let {mongoClient} = require('../mongo/mongoClient');
  * dao.crud();
  */
 
-const gameSchema = new Schema({
+const gameSchema = new Schema(
+    {
     title:String,
     label: String,
     coverUrl: String,
     detailUrl: String,
     link: String
-});
+    },
+    // 用于去掉mongoose默认的字段__v
+    {versionKey: false});
 
 /**
  * 配置 plugin
