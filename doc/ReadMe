@@ -16,4 +16,5 @@ export NODE_ENV=pro
 三. 配置支持ES6 import和export语法
 yarn add babel-cli babel-preset-es2015
 创建文件.babelrc
+设置环境变量: export NODE_ENV=pro
 babel-node ./app.js
