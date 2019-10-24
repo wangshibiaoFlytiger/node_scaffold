@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.2.3",
     "pkg": "^4.4.0"
   }
 }
