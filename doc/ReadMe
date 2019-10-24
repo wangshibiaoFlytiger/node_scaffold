@@ -12,3 +12,8 @@ yarn pkg
 4. 运行
 export NODE_ENV=pro
 ./dist/node_scaffold
+
+三. 配置支持ES6 import和export语法
+yarn add babel-cli babel-preset-es2015
+创建文件.babelrc
+babel-node ./app.js
