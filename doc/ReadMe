@@ -18,3 +18,6 @@ yarn add babel-cli babel-preset-es2015
 创建文件.babelrc
 设置环境变量: export NODE_ENV=pro
 babel-node ./app.js
+
+四. config库的使用
+默认config目录在项目根目录, 若想修改config目录位置, 需要配置环境变量NODE_CONFIG_DIR, 如NODE_CONFIG_DIR=/data/workspace/github/javascript/private/node_scaffold/src/config

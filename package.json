@@ -1,11 +1,11 @@
 {
-  "bin": "./app.js",
+  "bin": "./src/app.js",
   "name": "node_scaffold",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node ./app.js",
+    "dev": "babel-node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pkg": "pkg ./package.json -t node10-linux --out-path=dist/"
   },
