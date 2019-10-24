@@ -1,4 +1,4 @@
-const config = require('config');
+const config = require('../node_modules/config');
 
 (async () => {
     let GameDao = require("./dao/gameDao");
