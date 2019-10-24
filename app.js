@@ -1,8 +1,6 @@
 import {config} from "config";
 
 (async () => {
-    let mongoClient = require("./mongo/mongoClient").mongoClient;
-
     let GameDao = require("./dao/gameDao");
     let gameDao = new GameDao();
 
