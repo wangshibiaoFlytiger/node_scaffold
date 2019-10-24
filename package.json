@@ -1,12 +1,20 @@
 {
+  "bin": "./app.js",
   "name": "node_scaffold",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pkg": "pkg ./package.json -t node10-linux --out-path=dist/"
+  },
+  "pkg": {
+    "assets": ["./config/env/*"]
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pkg": "^4.4.0"
+  }
 }
