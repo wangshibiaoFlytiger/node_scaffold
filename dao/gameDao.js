@@ -1,10 +1,3 @@
-/**
- * author: Shawn
- * time  : 2017/8/30 13:52
- * desc  :
- * update: Shawn 2017/8/30 13:52
- */
-
 let BaseDao = require('./baseDao');
 let Game = require('../model/game');
 
@@ -12,24 +5,6 @@ let Game = require('../model/game');
 class GameDao extends BaseDao {
     constructor() {
         super(Game);
-    }
-
-    /**
-     * 插入单条记录
-     * @param game
-     */
-    async insert(game){
-        try {
-            let value = await super.save(game);
-            console.log("插入单条记录, 完成, value:" + value);
-        } catch (e) {
-            console.error("插入单条记录, 异常", e);
-        }
-    }
-
-    async findAll(){
-         let all = await super.findAll();
-         return all;
     }
 }
 

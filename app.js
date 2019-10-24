@@ -9,7 +9,8 @@ import {config} from "config";
     // 插入
     let Game = require("./model/game")
     let game = new Game({"title": "haha222"});
-    await gameDao.insert(game);
+    let result = await gameDao.save(game);
+    console.log("插入完成", result);
 
     // 查询所有记录列表
     let gameList = await gameDao.findAll();

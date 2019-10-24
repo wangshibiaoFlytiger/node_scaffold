@@ -1,10 +1,3 @@
-/**
- * author: Shawn
- * time  : 2017/8/31 10:40
- * desc  : Book Schema 和 Model
- * update: Shawn 2017/8/31 10:40
- */
-
 class BaseDao {
     /**
      * 子类构造传入对应的 Model 类
@@ -180,6 +173,5 @@ class BaseDao {
         });
     }
 }
-
 
 module.exports = BaseDao;
