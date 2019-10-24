@@ -1,7 +1,12 @@
-一. 运行程序
-1. 设置环境变量
-export NODE_ENV=pro
-2. node ./app.js
+一. 命令详解
+1. buildToEs5
+yarn buildToEs5, 用于将工程转为es5标准的代码
+2. pkg
+yarn pkg, 将工程打包为独立的可执行文件
+3. runPkg
+运行独立的可执行文件
+4. dev
+调试或运行工程代码, 且支持es6的import和export语法
 
 二. 打包应用为独立的可执行程序
 1. npm install pkg
@@ -13,6 +18,8 @@ yarn pkg
 export NODE_ENV=pro
 ./dist/node_scaffold
 
+代码中的注意事项：若require的为node_modules下的依赖库, 则需要明确写上路径, 否则运行打包生成的文件,会有错误提示：Cannot find module 'config'
+
 三. 配置支持ES6 import和export语法
 yarn add babel-cli babel-preset-es2015
 创建文件.babelrc
@@ -21,3 +28,4 @@ babel-node ./app.js
 
 四. config库的使用
 默认config目录在项目根目录, 若想修改config目录位置, 需要配置环境变量NODE_CONFIG_DIR, 如NODE_CONFIG_DIR=/data/workspace/github/javascript/private/node_scaffold/src/config
+通过实践可知, config库无法加载"打入可执行文件的配置文件", 所以无需将配置文件打入可执行文件,且配置文件需要额外部署
