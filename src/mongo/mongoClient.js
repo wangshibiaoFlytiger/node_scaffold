@@ -1,4 +1,4 @@
-import {config} from "config";
+const config = require('config');
 let mongoose = require('mongoose');
 
 /**
@@ -44,7 +44,7 @@ function getMongoClient(uri) {
     }
 }
 
-let mongoClient = getMongoClient(config.mongo.uri);
+let mongoClient = getMongoClient(config.get("mongo.uri"));
 
 /*var schema = new mongoose.Schema({ num:Number, name: String, size: String });
 var MyModel = mongoose.model('MyModel', schema);

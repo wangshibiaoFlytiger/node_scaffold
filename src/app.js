@@ -1,4 +1,4 @@
-import {config} from "config";
+const config = require('config');
 
 (async () => {
     let GameDao = require("./dao/gameDao");
