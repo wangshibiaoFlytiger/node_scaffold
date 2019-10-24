@@ -1,0 +1,4 @@
+一. 运行程序
+1. 设置环境变量
+export NODE_ENV=pro
+2. node ./app.js
