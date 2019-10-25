@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "buildToEs5": "babel ./src -d ./build_es5 --presets es2015",
-    "pkg": "pkg ./package.json -t node10-linux --out-path=dist/",
+    "pkg": "rm -f ./dist/* && pkg ./package.json -t node10-linux --out-path=dist/",
     "runPkg": "export NODE_ENV=dev && export NODE_CONFIG_DIR=./src/config && ./dist/node_scaffold",
     "dev": "export NODE_ENV=dev && export NODE_CONFIG_DIR=./src/config && babel-node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
