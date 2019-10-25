@@ -1,5 +1,6 @@
 import {addGameData, findGameList} from "./controller/gameController";
 
+const config = require("config");
 const Koa = require('koa');
 const Router = require('@koa/router');
 
@@ -13,4 +14,4 @@ router.get("/game/findGameList", findGameList);
 // 添加路由中间件
 app.use(router.routes());
 
-app.listen(3000);
+app.listen(config.get("service.port"));
