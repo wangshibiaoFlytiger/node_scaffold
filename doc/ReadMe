@@ -29,3 +29,8 @@ babel-node ./app.js
 四. config库的使用
 默认config目录在项目根目录, 若想修改config目录位置, 需要配置环境变量NODE_CONFIG_DIR, 如NODE_CONFIG_DIR=/data/workspace/github/javascript/private/node_scaffold/src/config
 通过实践可知, config库无法加载"打入可执行文件的配置文件", 所以无需将配置文件打入可执行文件,且配置文件需要额外部署
+
+吴. 集成web框架koa
+yarn add koa
+安装路由中间件
+yarn add @koa/router

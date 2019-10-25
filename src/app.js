@@ -1,17 +1,16 @@
-const config = require('../node_modules/config');
+import {addGameData, findGameList} from "./controller/gameController";
 
-(async () => {
-    let GameDao = require("./dao/gameDao");
-    let gameDao = new GameDao();
+const Koa = require('koa');
+const Router = require('@koa/router');
 
-    // 插入
-    let Game = require("./model/game")
-    let game = new Game({"title": "haha222"});
-    let result = await gameDao.save(game);
-    console.log("插入完成", result);
+const app = new Koa();
+const router = new Router();
 
-    // 查询所有记录列表
-    let gameList = await gameDao.findAll();
-    console.log("查询所有记录完成, ", gameList);
-    console.log(config);
-})();
+// 定义路由
+router.get("/game/addGameData", addGameData);
+router.get("/game/findGameList", findGameList);
+
+// 添加路由中间件
+app.use(router.routes());
+
+app.listen(3000);
