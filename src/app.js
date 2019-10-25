@@ -8,7 +8,7 @@ const app = new Koa();
 const router = new Router();
 
 // 定义路由
-router.get("/game/addGameData", addGameData);
+router.post("/game/addGameData", addGameData);
 router.get("/game/findGameList", findGameList);
 
 // 添加路由中间件
