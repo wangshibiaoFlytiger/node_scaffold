@@ -1,11 +1,11 @@
 {
-  "bin": "./src/app.js",
+  "bin": "./build_es5/app.js",
   "name": "node_scaffold",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "buildToEs5": "babel ./src -d ./build_es5 --presets es2015",
+    "buildToEs5": "rm -rf ./build_es5 && babel ./src -d ./build_es5 --presets es2015",
     "pkg": "rm -f ./dist/* && pkg ./package.json -t node10-linux --out-path=dist/",
     "runPkg": "export NODE_ENV=dev && export NODE_CONFIG_DIR=./src/config && ./dist/node_scaffold",
     "dev": "export NODE_ENV=dev && export NODE_CONFIG_DIR=./src/config && babel-node ./src/app.js",
