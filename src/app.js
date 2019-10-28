@@ -1,4 +1,4 @@
-import {addGameData, findGameList} from "./controller/gameController";
+import {addGameData, findGameList, findPage} from "./controller/gameController";
 
 const config = require("config");
 const Koa = require('koa');
@@ -10,6 +10,7 @@ const router = new Router();
 // 定义路由
 router.post("/game/addGameData", addGameData);
 router.get("/game/findGameList", findGameList);
+router.get("/game/findPage", findPage);
 
 // 添加路由中间件
 app.use(router.routes());

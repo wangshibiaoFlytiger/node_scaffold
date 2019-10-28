@@ -74,6 +74,44 @@ class BaseDao {
         });
     }
 
+    /**
+     * 查询分页列表
+     * @param pageNo
+     * @param pageSize
+     * @param queryParams
+     * @param sortParams
+     */
+    async findPage(pageNo, pageSize, queryParams, sortParams) {
+        let Model = this.Model;
+        return new Promise((resolve, reject) => {
+            let offset = (pageNo - 1) * pageSize;
+
+            Model.countDocuments(queryParams, function (err, totalCount) {
+                if (err){
+                    console.error(err)
+                    reject(err);
+                }
+                console.log("count", totalCount)
+
+                //查询当前页数据
+                let dataList;
+                Model.find(queryParams).skip(offset).limit(pageSize).sort(sortParams).exec(function (err, dataList) {
+                    if (err){
+                        console.error(err)
+                        reject(err);
+                    }
+                    console.log("查询分页列表, 完成");
+
+                    let data = {
+                        totalCount: totalCount,
+                        list: dataList
+                    }
+                    resolve(data);
+                });
+            });
+        });
+    };
+
 
     /**
      * 查找符合条件的第一条 doc

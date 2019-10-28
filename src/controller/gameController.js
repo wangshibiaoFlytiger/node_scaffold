@@ -37,4 +37,21 @@ async function findGameList(ctx, next) {
     };
 }
 
-export {addGameData, findGameList};
+/**
+ * 分页列表接口
+ * @param ctx
+ * @param next
+ * @returns {Promise<void>}
+ */
+async function findPage(ctx, next) {
+    // 分页查询记录列表
+    let gameListPage = await gameDao.findPage(1, 10, {}, {});
+    console.log("分页列表接口, ", gameListPage);
+
+    ctx.response.body = {
+        "code": 1,
+        "data": gameListPage,
+    };
+}
+
+export {addGameData, findGameList, findPage};
