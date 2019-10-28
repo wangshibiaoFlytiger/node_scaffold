@@ -44,8 +44,11 @@ async function findGameList(ctx, next) {
  * @returns {Promise<void>}
  */
 async function findPage(ctx, next) {
+    let pageNo = Number(ctx.query.pageNo)
+    let pageSize = Number(ctx.query.pageSize)
+
     // 分页查询记录列表
-    let gameListPage = await gameDao.findPage(1, 10, {}, {});
+    let gameListPage = await gameDao.findPage(pageNo, pageSize, {}, {});
     console.log("分页列表接口, ", gameListPage);
 
     ctx.response.body = {
