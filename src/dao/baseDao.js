@@ -83,32 +83,53 @@ class BaseDao {
      */
     async findPage(pageNo, pageSize, queryParams, sortParams) {
         let Model = this.Model;
+
         return new Promise((resolve, reject) => {
-            let offset = (pageNo - 1) * pageSize;
+            let async = require("async");
+            async.parallel({
+                /**
+                 * 查询记录总数
+                 * @param done
+                 */
+                totalCount: function (done) {
+                    Model.countDocuments(queryParams, function (err, totalCount) {
+                        if (err){
+                            console.error("查询分页列表, 查询记录总数, 异常", err)
+                        }
 
-            Model.countDocuments(queryParams, function (err, totalCount) {
-                if (err){
-                    console.error(err)
-                    reject(err);
+                        console.log("查询分页列表, 查询记录总数, 完成");
+                        done(err, totalCount);
+                    });
+                },
+
+                /**
+                 * 查询当前页数据列表
+                 * @param done
+                 */
+                pageDataList: function (done) {
+                    let offset = (pageNo - 1) * pageSize;
+                    Model.find(queryParams).sort(sortParams).skip(offset).limit(pageSize).exec(function (err, pageDataList) {
+                        if (err){
+                            console.error("查询分页列表, 查询当前页数据列表, 异常", err)
+                        }
+
+                        console.log("查询分页列表, 查询当前页数据列表, 完成");
+                        done(err, pageDataList);
+                    });
                 }
-                console.log("count", totalCount)
+            }, function (err, result) {
+                if (err){
+                    console.error("查询分页列表, 异常", err);
+                    return reject(err);
+                }
 
-                //查询当前页数据
-                let dataList;
-                Model.find(queryParams).skip(offset).limit(pageSize).sort(sortParams).exec(function (err, dataList) {
-                    if (err){
-                        console.error(err)
-                        reject(err);
-                    }
-                    console.log("查询分页列表, 完成");
-
-                    let data = {
-                        totalCount: totalCount,
-                        list: dataList
-                    }
-                    resolve(data);
-                });
-            });
+                let data = {
+                    totalCount: result.totalCount,
+                    list: result.pageDataList
+                }
+                resolve(data);
+                console.log("查询分页列表, 完成", data);
+            })
         });
     };
 
