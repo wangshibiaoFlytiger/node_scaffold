@@ -9,8 +9,10 @@ const Game = require("../model/game")
  * @returns {Promise<void>}
  */
 async function addGameData(ctx, next){
+    let requestBody = ctx.request.body;
+
     // 插入
-    let game = new Game({"title": "game1"});
+    let game = new Game(requestBody);
     let result = await gameDao.save(game);
     console.log("插入完成", result);
 

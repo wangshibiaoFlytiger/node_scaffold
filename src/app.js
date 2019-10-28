@@ -7,8 +7,11 @@ const Router = require('@koa/router');
 const app = new Koa();
 const router = new Router();
 
+// 添加koa-body中间件,使可以获取request body参数
+const koaBody = require('koa-body');
+
 // 定义路由
-router.post("/game/addGameData", addGameData);
+router.post("/game/addGameData", koaBody(), addGameData);
 router.get("/game/findGameList", findGameList);
 router.get("/game/findPage", findPage);
 
