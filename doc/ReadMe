@@ -18,7 +18,12 @@ yarn pkg
 export NODE_ENV=pro
 ./dist/node_scaffold
 
-代码中的注意事项：若require的为node_modules下的依赖库, 则需要明确写上路径, 否则运行打包生成的文件,会有错误提示：Cannot find module 'config'
+注意事项：package.json需要增加如下配置, 否则若require的为node_modules下的依赖库, 会出现类似错误提示：Cannot find module 'config'
+  "pkg": {
+    "assets": [
+      ""
+    ]
+  }
 
 三. 配置支持ES6 import和export语法
 yarn add babel-cli babel-preset-es2015
